@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOSHUA BIGCAS</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    background: #000; /* black background */
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    font-weight: 600;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(20,20,20,0.95);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 2px solid #ff0000;
+}
+
+.nav button {
+    background: linear-gradient(135deg, #ff4d4d, #ffffff);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s ease;
+    opacity: 0.85;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ff4d4d;
+    animation: pulse 2s infinite;
+}
+
+.nav button.active,
+.nav button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ff4d4d, 0 0 25px #ffffff;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff4d4d, 0 0 20px #ff0000;
+    }
+    50% {
+        text-shadow: 0 0 15px #fff, 0 0 30px #ff4d4d, 0 0 45px #ff0000;
+    }
+}
+
+/* ===== SECTIONS ===== */
+.section {
+    display: none;
+    min-height: 90vh;
+    padding: 80px 20px;
+    animation: fadeSlide 0.6s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== HEADINGS ===== */
+h1 {
+    font-size: 42px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 5px #ff6666, 0 0 10px #ff0000, 0 0 15px #ffffff;
+}
+
+/* ===== AUTOBIO & SONG IMAGE ===== */
+#auto img,
+#song img {
+    width: 80%;
+    max-width: 500px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff0000;
+    transition: 0.3s;
+}
+
+#auto img:hover,
+#song img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 40px #ff4d4d, 0 0 50px #ffffff;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 0 15px #ff0000;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px #ff4d4d, 0 0 45px #ffffff;
+}
+
+.card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* ===== NUMBER BADGE ===== */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, #ff4d4d, #ffffff);
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ===== SONG BUTTON ===== */
+#song a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #ff0000, #ffffff);
+    color: #000;
+    font-size: 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #fff;
+    animation: pulse 2s infinite;
+}
+
+#song a:hover {
+    box-shadow: 0 0 25px #ff4d4d, 0 0 35px #ffffff;
+}
+
+/* ===== VIDEO ===== */
+video {
+    width: 300px;
+    height: 530px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 0 35px #ff4d4d, 0 0 50px #ffffff;
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 20px;
+    box-shadow: 0 0 40px #ff4d4d, 0 0 60px #ffffff;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 45px;
+    cursor: pointer;
+    color: #ff4d4d;
+    text-shadow: 0 0 10px #ff4d4d, 0 0 20px #fff;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    video {
+        width: 90%;
+        height: auto;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<div class="nav">
+    <button class="active" onclick="show('home', this)">HOME</button>
+    <button onclick="show('auto', this)">MY AUTOBIOGRAPHY</button>
+    <button onclick="show('gallery', this)">MY GALLERY</button>
+    <button onclick="show('song', this)">MY SONG</button>
+    <button onclick="show('video', this)">MY VIDEO</button>
+</div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+    <h1>HELLO<br>I AM JOSHUA BIGCAS<br>WELCOME TO MY WEB PAGE!!</h1>
+</div>
+
+<!-- AUTOBIOGRAPHY -->
+<div id="auto" class="section">
+    <h1>MY AUTOBIOGRAPHY</h1>
+    <img src="joshua/jauto.jpg" class="clickable">
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="section">
+    <h1>MY GALLERY</h1>
+    <div class="gallery">
+        <div class="card"><span class="badge">1</span><img src="joshua/j1.jpg" class="clickable"></div>
+        <div class="card"><span class="badge">2</span><img src="joshua/j2.jpg" class="clickable"></div>
+        <div class="card"><span class="badge">3</span><img src="joshua/j3.jpg" class="clickable"></div>
+        <div class="card"><span class="badge">4</span><img src="joshua/j4.jpg" class="clickable"></div>
+        <div class="card"><span class="badge">5</span><img src="joshua/j5.jpg" class="clickable"></div>
+        <div class="card"><span class="badge">6</span><img src="joshua/j6.jpg" class="clickable"></div>
+    </div>
+</div>
+
+<!-- SONG -->
+<div id="song" class="section">
+    <h1>LOVE YOURSELF BY DUDONG</h1>
+    <img src="joshua/love.jpg" class="clickable"><br>
+    <a href="https://youtu.be/pb4hWWMlFYg?si=xOV_zcRfROEKBZqc" target="_blank">▶ LISTEN ON YOUTUBE</a>
+</div>
+
+<!-- VIDEO -->
+<div id="video" class="section">
+    <h1>MY VIDEO</h1>
+    <video controls>
+        <source src="joshua/j.mp4" type="video/mp4">
+    </video>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg">
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+function show(id, btn){
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+
+document.querySelectorAll('.clickable').forEach(img => {
+    img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+    });
+});
+
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+modal.addEventListener('click', e => {
+    if(e.target === modal) modal.style.display = 'none';
+});
+</script>
+
+</body>
+</html>
